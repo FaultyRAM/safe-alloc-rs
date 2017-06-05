@@ -1,0 +1,27 @@
+[package]
+name = "safe-alloc"
+version = "0.1.0"
+authors = ["FaultyRAM <explodingpsu@gmail.com>"]
+description = "Memory allocation in safe Rust, without aborting on failure."
+documentation = "https://docs.rs/safe-alloc/0.1.0"
+repository = "https://github.com/FaultyRAM/safe-alloc-rs"
+readme = "README.md"
+keywords = ["malloc", "realloc", "memory", "allocate", "allocation"]
+categories = ["memory-management", "no-std"]
+license = "Apache-2.0/MIT"
+
+[badges.travis-ci]
+repository = "FaultyRAM/safe-alloc-rs"
+
+[badges.appveyor]
+repository = "FaultyRAM/safe-alloc-rs"
+
+[badges.is-it-maintained-issue-resolution]
+repository = "FaultyRAM/safe-alloc-rs"
+
+[badges.is-it-maintained-open-issues]
+repository = "FaultyRAM/safe-alloc-rs"
+
+[dependencies.clippy]
+version = "0.0"
+optional = true
