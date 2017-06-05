@@ -181,7 +181,7 @@ impl Drop for Allocation {
     #[inline]
     fn drop(&mut self) {
         unsafe {
-            __rust_deallocate(self.ptr.as_ptr(), self.len, self.align);
+            __rust_deallocate(self.as_mut_ptr(), self.len, self.align);
         }
     }
 }
