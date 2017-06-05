@@ -19,6 +19,6 @@ install:
   - cargo -vV
 build_script:
   - cargo build -vv --target=%TARGET% --features "%EXTRA_FEATURES%"
-  - cargo doc -vv --target=%TARGET% --features = "%EXTRA_FEATURES%"
+  - cargo doc -vv --target=%TARGET% --features "%EXTRA_FEATURES%"
 test_script:
   - cargo test -vv --target=%TARGET% --features "%EXTRA_FEATURES%"
