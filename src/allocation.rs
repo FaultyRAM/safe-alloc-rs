@@ -9,7 +9,7 @@
 
 #![cfg_attr(feature = "clippy", allow(inline_always))]
 
-use core::{fmt, intrinsics, isize};
+use core::{fmt, intrinsics, isize, mem};
 use core::ptr::Unique;
 use super::error::Error;
 use super::result::Result;
@@ -102,6 +102,35 @@ impl Allocation {
                 }
             }
         )
+    }
+
+    #[inline]
+    /// Takes ownership of a raw pointer, length and alignment, and treats the three as an
+    /// existing allocation.
+    ///
+    /// This is unsafe because it assumes that the pointer refers to memory allocated via the Rust
+    /// allocation model using the given length and alignment. Undefined behavior will occur if
+    /// these assumptions do not hold true.
+    pub unsafe fn from_raw(ptr: *mut u8, len: usize, align: usize) -> Allocation {
+        Allocation {
+            ptr: Unique::new(ptr),
+            len: len,
+            align: align,
+        }
+    }
+
+    #[cfg_attr(feature = "clippy", allow(mem_forget))]
+    #[inline]
+    /// Consumes an allocation without freeing associated memory, returning its pointer, length
+    /// and alignment.
+    ///
+    /// Care must be taken to ensure that the memory is correctly freed after calling this method.
+    /// This can be done by reconstructing the allocation via `Allocation::from_raw` and dropping
+    /// it immediately afterwards.
+    pub fn into_raw(self) -> (*mut u8, usize, usize) {
+        let ret = (self.ptr.as_ptr(), self.len, self.align);
+        mem::forget(self);
+        ret
     }
 
     #[inline]
