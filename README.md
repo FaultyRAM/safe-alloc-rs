@@ -3,6 +3,7 @@
 [![Travis](https://img.shields.io/travis/FaultyRAM/safe-alloc-rs.svg)][1]
 [![AppVeyor](https://img.shields.io/appveyor/ci/FaultyRAM/safe-alloc-rs.svg)][2]
 [![Crates.io](https://img.shields.io/crates/v/safe-alloc.svg)][3]
+[![Docs.rs](https://docs.rs/safe-alloc/badge.svg)][4]
 
 Memory allocation in safe Rust, without aborting on failure.
 
@@ -26,3 +27,4 @@ conditions.
 [1]: https://travis-ci.org/FaultyRAM/safe-alloc-rs
 [2]: https://ci.appveyor.com/project/FaultyRAM/safe-alloc-rs
 [3]: https://crates.io/crates/safe-alloc
+[4]: https://docs.rs/safe-alloc
