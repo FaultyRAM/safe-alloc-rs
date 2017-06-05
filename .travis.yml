@@ -2,8 +2,8 @@ os:
   - linux
   - osx
 language: rust
-rust: nightly
+rust: nightly-2017-06-04
 script:
-  - cargo build -vv
-  - cargo doc -vv
-  - cargo test -vv
+  - cargo build -vv --features "clippy"
+  - cargo doc -vv --features "clippy"
+  - cargo test -vv --features "clippy"

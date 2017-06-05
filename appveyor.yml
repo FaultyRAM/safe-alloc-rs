@@ -2,11 +2,11 @@ environment:
   matrix:
     - ARCH: x86_64
       ABI: gnu
-      CHANNEL: nightly
+      CHANNEL: nightly-2017-06-04
       EXTRA_FEATURES: clippy
     - ARCH: x86_64
       ABI: msvc
-      CHANNEL: nightly
+      CHANNEL: nightly-2017-06-04
       EXTRA_FEATURES: clippy
 install:
   - SET PATH=%PATH%;%USERPROFILE%\.cargo\bin;C:\MinGW\bin

@@ -23,5 +23,5 @@ repository = "FaultyRAM/safe-alloc-rs"
 repository = "FaultyRAM/safe-alloc-rs"
 
 [dependencies.clippy]
-version = "0.0"
+version = "0.0.137"
 optional = true
