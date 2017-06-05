@@ -8,17 +8,21 @@
 //! Memory allocation in safe Rust, without aborting on failure.
 
 #![no_std]
+#![needs_allocator]
+#![feature(allocator)]
+#![feature(needs_allocator)]
+#![feature(unique)]
 #![cfg_attr(feature = "clippy", feature(plugin))]
 #![cfg_attr(feature = "clippy", plugin(clippy))]
-#![cfg_attr(feature = "clippy", forbid(clippy))]
+#![cfg_attr(feature = "clippy", deny(clippy))]
 #![cfg_attr(feature = "clippy", forbid(clippy_internal))]
-#![cfg_attr(feature = "clippy", forbid(clippy_pedantic))]
+#![cfg_attr(feature = "clippy", deny(clippy_pedantic))]
 #![cfg_attr(feature = "clippy", forbid(clippy_restrictions))]
-#![forbid(warnings)]
+#![deny(warnings)]
 #![forbid(anonymous_parameters)]
 #![forbid(box_pointers)]
 #![forbid(fat_ptr_transmutes)]
-#![forbid(missing_copy_implementations)]
+#![deny(missing_copy_implementations)]
 #![forbid(missing_debug_implementations)]
 #![forbid(missing_docs)]
 #![forbid(trivial_casts)]
@@ -26,8 +30,10 @@
 #![forbid(unused_extern_crates)]
 #![forbid(unused_import_braces)]
 #![deny(unused_qualifications)]
+#![allow(unused_attributes)]
 #![forbid(unused_results)]
 #![forbid(variant_size_differences)]
 
+pub mod allocation;
 pub mod error;
 pub mod result;

@@ -14,6 +14,8 @@ use core::fmt::{Display, Formatter, Result};
 pub enum Error {
     /// There is not enough free memory to satisfy a memory (re)allocation.
     NotEnoughMemory,
+    /// Attempted to perform a zero-length allocation.
+    ZeroLength,
     /// An invalid alignment was passed to a memory management function.
     BadAlignment,
 }
@@ -22,6 +24,7 @@ impl Display for Error {
     fn fmt(&self, f: &mut Formatter) -> Result {
         match *self {
             Error::NotEnoughMemory => f.write_str("out of memory"),
+            Error::ZeroLength => f.write_str("allocation length must be greater than zero bytes"),
             Error::BadAlignment => f.write_str("alignment must be a power of two"),
         }
     }
