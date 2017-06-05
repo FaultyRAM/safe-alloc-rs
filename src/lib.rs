@@ -10,6 +10,7 @@
 #![no_std]
 #![needs_allocator]
 #![feature(allocator)]
+#![feature(core_intrinsics)]
 #![feature(needs_allocator)]
 #![feature(unique)]
 #![cfg_attr(feature = "clippy", feature(plugin))]
