@@ -9,7 +9,7 @@
 
 #![cfg_attr(feature = "clippy", allow(inline_always))]
 
-use core::{fmt, isize};
+use core::{fmt, intrinsics, isize};
 use core::ptr::Unique;
 use super::error::Error;
 use super::result::Result;
@@ -135,6 +135,23 @@ impl Allocation {
                     __rust_reallocate_inplace(self.as_mut_ptr(), self.len, new_len, self.align)
                 };
                 Ok(())
+            }
+        )
+    }
+
+    /// Creates a new memory allocation with the same length, alignment and contents as an
+    /// existing allocation.
+    pub fn duplicate(&self) -> Result<Allocation> {
+        Allocation::new(self.len, self.align).map(
+            |mut new_alloc| {
+                unsafe {
+                    intrinsics::copy_nonoverlapping(
+                        self.as_ptr(),
+                        new_alloc.as_mut_ptr(),
+                        self.len,
+                    );
+                }
+                new_alloc
             }
         )
     }
