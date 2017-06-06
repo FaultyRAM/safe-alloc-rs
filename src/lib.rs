@@ -37,4 +37,5 @@
 
 pub mod allocation;
 pub mod error;
+mod heap;
 pub mod result;
